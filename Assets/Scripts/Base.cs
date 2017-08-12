@@ -24,6 +24,7 @@ public class Base : MonoBehaviour
     private bool canAttack;
     private bool defending;
 
+
     public void EnableTurn()
     {
         enabled = true;
@@ -33,6 +34,8 @@ public class Base : MonoBehaviour
     public void AttackWithCatapult()
     {
         Debug.Log("Used Attack with catapult");
+        catapult.Fire();
+        canAttack = false;
     }
 
     public void AttackWithRay()
@@ -57,6 +60,7 @@ public class Base : MonoBehaviour
 
     private void TakeDamage(Projectile projectile)
     {
+        
     }
 
     // Use this for initialization
@@ -73,6 +77,24 @@ public class Base : MonoBehaviour
     {
         if (canAttack)
         {
+            if (Input.GetKey(KeyCode.A))
+            {
+                AttackWithCatapult();
+                canAttack = false;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                AttackWithRay();
+                canAttack = false;
+            }
+        }
+
+        if (currentHP <= 0)
+        {
+            if (onBaseDestroyed != null)
+            {
+                onBaseDestroyed(this);
+            }
         }
     }
 }

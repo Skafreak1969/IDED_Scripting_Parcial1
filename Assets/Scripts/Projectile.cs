@@ -48,6 +48,8 @@ public class Projectile : MonoBehaviour
 
     public void Update()
     {
+        elapsedTime += Time.deltaTime;
+        transform.position = Vector3.Slerp(initialLocation, targetLocation, elapsedTime);
     }
 
     private void AutoDestroy()

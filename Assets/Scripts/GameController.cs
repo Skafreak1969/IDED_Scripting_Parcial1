@@ -74,19 +74,21 @@ public class GameController : MonoBehaviour
         if (ActiveBase == base1)
         {
             ActiveBase = base2;
+            TargetLocation = base1.transform.position;
         }
         else if (ActiveBase == base2)
         {
             ActiveBase = base1;
             totalTurns += 1;
+            TargetLocation = base2.transform.position;
         }
         else
         {
             ActiveBase = base1;
+            TargetLocation = base2.transform.position;
         }
 
         ActiveBase.EnableTurn();
-        TargetLocation = ActiveBase.transform.position;
     }
 
     private void OnBaseDestroyed(Base destroyedBase)

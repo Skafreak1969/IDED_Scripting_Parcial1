@@ -21,6 +21,7 @@ public class RayBeam : MonoBehaviour
 
     public void Fire()
     {
+        Physics.Raycast(transform.position,targetLocation, 10);
     }
 
     private void OnDrawGizmos()
